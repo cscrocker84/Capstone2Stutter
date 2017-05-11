@@ -1,0 +1,23 @@
+{
+  "name": "capstone2stutter",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "Charlie Crocker <cscrocker84@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/cscrocker84/Capstone2Stutter",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "materialize": "^0.98.2",
+    "bootstrap": "^3.3.7"
+  }
+}
