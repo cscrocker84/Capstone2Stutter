@@ -29,34 +29,81 @@ app.use(function(req, res, next) {
   next();
 });
 
-const HTML5_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+// const HTML5_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
-const User = mongoose.model('User', {
-  email: {
-    type: String,
-    lowercase: true,
-    required: true,
-    match: [HTML5_EMAIL_REGEX, 'Please enter a valid email address'],
-    index: { unique: true },
-  },
-  password: String
-})
+// const User = mongoose.model('User', {
+//   email: {
+//     type: String,
+//     lowercase: true,
+//     required: true,
+//     match: [HTML5_EMAIL_REGEX, 'Please enter a valid email address'],
+//     index: { unique: true },
+//   },
+//   password: String
+// })
 
-app.post(`/api/register`, ({body: {email, password}}, res) => {
-      console.log("hitting the register api route")
-      return new Promise((resolve, reject) => {
-      bcrypt.hash(password, 15, (err, hash) => {
-              if (err) {
-                reject(err)
-              } else {
-                resolve(hash)
-              }
-            })
-          })
-      .then(hash => User.create({ email, password: hash }))
-      // .then(() => res.redirect('/#!/login'))
-      .catch(console.error)
-})
+// app.post(`/api/register`, ({body: {email, password}}, res) => {
+//       console.log("hitting the register api route")
+//       return new Promise((resolve, reject) => {
+//       bcrypt.hash(password, 15, (err, hash) => {
+//               if (err) {
+//                 reject(err)
+//               } else {
+//                 resolve(hash)
+//               }
+//             })
+//           })
+//       .then(hash => User.create({ email, password: hash }))
+//       // .then(() => res.redirect('/#!/login'))
+//       .catch(console.error)
+// })
+
+// app.post(`/api/login`, ({ session, body: { email, password } }, res, err) => {
+//   console.log("hitting log in route on server")
+//   User.findOne({ email })
+//      .then(user => {
+//        if (user) {
+//          return new Promise((resolve, reject) =>
+//            bcrypt.compare(password, user.password, (err, matches) => {
+//              if (err) {
+//                reject(err)
+//              } else {
+//                resolve(matches)
+//              }
+//            })
+//          )
+//        } else {
+//         console.log("email does not exist in our system")
+//        }
+//      })
+//      .then((matches) => {
+//        if (matches) {
+//          session.email = email
+//          res.redirect('/')
+//        } else {
+//         console.log("else, line 87")
+//        }
+//       })
+// })
+
+// app.get(`/api/allQuotes`, (req, res, err) => {
+//   Quote
+//   .find()
+//   .then((quotes) => {
+//     res.json({quotes})
+//   })
+//   .catch(err)
+// })
+
+
+// app.post(`/api/addQuote`, (req, res, err) => {
+//   Animal
+//   .create(req.body)
+//   .then((animal) => {
+//     res.send("done")
+//   })
+//   .catch(err)
+// })
 
 
 // const quoteSchema = {
