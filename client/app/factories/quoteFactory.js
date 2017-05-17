@@ -6,14 +6,17 @@ app.factory('quoteFactory', ($q, $http) => {
     const postedURL = './addUserPost'
 
   return {
-    newPost(link, title) {
+    newQuote(quote, author) {
       console.log('NEW POST')
-      return authFactory.getUser()
-        .then((user) => {
+      (quote) => {
           return $http.post(``, {
-            uid: user.uid,
-            quote: title,
-            url: link,
+            quote: quote,
+            author: author
           })
-        })
+        }
+    },
+
+  getQuotes() {
+      return $http.get(``)
+        .then(res => res.data)
     },

@@ -5,9 +5,9 @@ app.config(['$routeProvider', function($routeProvider){
       .when('/', {
         templateUrl: 'partials/home.html',
         controller: 'HomeCtrl'
-      }).when('/add', {
-        templateUrl: 'partials/addQuotes.html',
-        controller: 'AddQuoteCtrl'
+      // }).when('/add', {
+      //   templateUrl: 'partials/addQuotes.html',
+      //   controller: 'AddQuoteCtrl'
       }).when('/meetups', {
         templateUrl: 'partials/meetups.html',
         controller: 'MeetupCtrl'
