@@ -9,7 +9,7 @@ console.log("meetup");
 
 router.get('/meetups', getMeetups)
 router.post('/meetups', addMeetup)
-// router.patch('/meetups', updateMeetup)
-// router.delete('/meetups', deleteMeetup)
+router.patch('/meetups', updateMeetup)
+router.delete('/meetups', deleteMeetup)
 
 module.exports = router
