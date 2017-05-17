@@ -29,7 +29,7 @@ module.exports.deleteQuote = (req, res, next) => {
 module.exports.updateQuote = (req,res,next) =>{
   const quote = req.body
   console.log("body",quote);
-  Quote.updateQuote(quote,author)
+  Quote.update(quote)
   .then(quote => res.status(200).json(quote))
   .catch(err => next(err))
 }

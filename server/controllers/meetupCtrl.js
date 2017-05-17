@@ -19,3 +19,17 @@ module.exports.addMeetup = (req, res, next) => {
         })
         .catch(err => next(err))
 }
+
+module.exports.deleteMeetup = (req, res, next) => {
+    Meetup.delete(meetup)
+        .then(meetup => res.status(200).json({msg: 'successful deletion'}))
+        .catch(err => next(err))
+}
+
+module.exports.updateMeetup = (req,res,next) =>{
+  const meetup = req.body
+  console.log("body",meetup);
+  Meetup.update(meetup)
+  .then(meetup => res.status(200).json(meetup))
+  .catch(err => next(err))
+}
