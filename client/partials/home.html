@@ -9,9 +9,27 @@
                     <li class="active"><a href="/#/">Home<span class="sr-only">(current)</span></a></li>
                     <li><a href="/">Login</a></li>
                     <li><a href="/add">Add Quote</a></li>
-                    <li><a href="/meetups">Meetups Page</a></li>
+                    <li><id="newPost" data-target="postModal"></a>Add Quote</li>
                 </ul>
             </div>
+
+<!--   ng-repeat through posts -->
+<div class="col s9">
+      <h4>{{value.quote}}</h4></a>
+    <!--   <p class="light">{{value.venue}}, {{value.date}}</p> -->
+      <p class="light">Posted By: {{value.author}}</p>
+    </div>
+
+  <!-- <div class="square">
+    <div class="content">
+        <div class="table">
+            <div class="table-cell">
+                ... CONTENT HERE ...
+            </div>
+        </div>
+    </div>
+</div> -->
+
  <!-- Login Modal  -->
   <div id="loginModal" ng-controller="loginCtrl" class="modal">
     <div class="modal-content">
@@ -46,8 +64,8 @@
     <div class="modal-content">
       <h4>New Quote</h4>
       <form ng-submit="newPost()">
-        <input type="text" ng-model="Link" placeholder="Stuttering Quote">
-        <input type="text" ng-model="Title" placeholder="Author">
+        <input type="text" ng-model="Quote" placeholder="Stuttering Quote">
+        <input type="text" ng-model="Author" placeholder="Author">
         <input type="file" id="fileUpload">
         <input type="submit" class="modal-action modal-close waves-effect waves-green btn-flat" value="Post">
       </form>
