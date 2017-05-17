@@ -8,26 +8,37 @@ const session = require('express-session')//REDISSTUFF
 const RedisStore = require('connect-redis')(session)//REDISSTUFF
 const bcrypt =require('bcrypt')
 const app = express()
+
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb://localhost:27017/stutter'
 const PORT = process.env.PORT || 3000
 
-module.exports = {quoteSchema, Quote, Meetup, User} = require('./models/models.js')
+const {Quote, Meetup, User} = require('./models/model.js')
 
 app.use(express.static('client'))
 
 app.use(json())
 
-app.use(session({//REDISSTUFF
-  'store': new RedisStore({
-    url: process.env.REDIS_URL || 'redis://localhost:6379'
-  }),
-  'secret': 'supersecretkey' //fine to put this on github
-}))
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  res.header("Access-Control-Allow-Methods", "GET, POST,HEAD, OPTIONS,PUT, DELETE, PATCH");
-  next();
-});
+app.use (require('./routes/index.js'))
+
+mongoose.connect(MONGODB_URL)
+  .then(() => {
+    app.listen(PORT, () => {
+    console.log(`Hey, I'm listening on port ${PORT}`);
+    })
+  })
+  .catch(console.error)
+// app.use(session({//REDISSTUFF
+//   'store': new RedisStore({
+//     url: process.env.REDIS_URL || 'redis://localhost:6379'
+//   }),
+//   'secret': 'supersecretkey' //fine to put this on github
+// }))
+// app.use(function(req, res, next) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.header("Access-Control-Allow-Methods", "GET, POST,HEAD, OPTIONS,PUT, DELETE, PATCH");
+//   next();
+// });
 
 // const HTML5_EMAIL_REGEX = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 

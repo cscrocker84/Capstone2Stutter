@@ -8,14 +8,18 @@ const quoteSchema = {
 }
 const Quote = mongoose.model('quote', quoteSchema)
 
-const Meetup = mongoose.model('meetup', {
+const meetupSchema = {
   title: String,
   date: Date,
   location: String
-})
-const User = mongoose.model('user', {
+}
+const Meetup = mongoose.model('meetup', meetupSchema)
+
+const userSchema = {
   email: String,
   password: String
-})
+}
 
-module.exports = {quoteSchema, Quote, Meetup, User}
+const User = mongoose.model('user', userSchema)
+
+module.exports = {Quote, Meetup, User}

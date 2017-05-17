@@ -5,9 +5,11 @@ const router = Router()
 
 const {getQuotes, addQuote, deleteQuote, updateQuote} = require('../controllers/quoteCtrl')
 
+console.log("quote");
+
 router.get('/quotes', getQuotes)
-router.post('/quotes', addQuotes)
-router.patch('/quotes/:id', updateQuotes )
-router.delete('/quotes/:id', deleteQuotes)
+router.post('/quotes', addQuote)
+router.patch('/quotes/', updateQuote)
+router.delete('/quotes/', deleteQuote)
 
 module.exports = router
