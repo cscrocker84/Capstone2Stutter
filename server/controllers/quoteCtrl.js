@@ -5,7 +5,7 @@ const {Quote} = require('../models/model.js')
 // Fetches quotes from database when called
 // responds with status code 200 and json of quotes if successful
 module.exports.getQuotes = (req, res, next) => {
-    Quote.getAll()
+    Quote.find()
         .then(quotes => res.status(200).json({quotes}))
         .catch(error => next(error))
 }
@@ -21,13 +21,14 @@ module.exports.addQuote = (req, res, next) => {
 }
 
 module.exports.deleteQuote = (req, res, next) => {
-    Quote.delete(quote)
+  console.log("req.params.id");
+    Quote.findOneAndRemove({_id:req.params.id})
         .then(quote => res.status(200).json({msg: 'successful deletion'}))
         .catch(err => next(err))
 }
 
 module.exports.updateQuote = (req,res,next) =>{
-  const quote = req.body
+  let quote = req.body
   console.log("body",quote);
   Quote.update(quote)
   .then(quote => res.status(200).json(quote))

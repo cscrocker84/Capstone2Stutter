@@ -18,7 +18,9 @@ app.use(express.static('client'))
 
 app.use(json())
 
-app.use (require('./routes/index.js'))
+let routes = require('./routes');
+
+app.use('/api', routes)
 
 mongoose.connect(MONGODB_URL)
   .then(() => {
