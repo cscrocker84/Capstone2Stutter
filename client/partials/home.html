@@ -4,20 +4,18 @@
   <h5>Let the World Hear Your Voice</h5>
 </div>
  <!-- Collapsible Navbar -->
-            <div class="collapse navbar-collapse" id="example-1">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/#/">Home<span class="sr-only">(current)</span></a></li>
-                    <li><a href="/">Login</a></li>
-                    <li><a href="/add">Add Quote</a></li>
-                    <li><id="newPost" data-target="postModal"></a>Add Quote</li>
-                </ul>
-            </div>
+            <div class="container">
+  <button class="waves-effect grey btn-large">Logout</button>
+  <button id="loginButton" class="waves-effect grey btn-large"> LOGIN</button>
 
 <!--   ng-repeat through posts -->
 <div class="col s9">
-      <h4>{{value.quote}}</h4></a>
+      <div ng-repeat="quote in quotes">
+      <h4>"{{quote.quote}}"</h4>
+      <h5>Author: {{quote.author}}</h5>
+      </div>
     <!--   <p class="light">{{value.venue}}, {{value.date}}</p> -->
-      <p class="light">Posted By: {{value.author}}</p>
+   <!--    <p class="light">Posted By: {{value.author}}</p> -->
     </div>
 
   <!-- <div class="square">
@@ -46,7 +44,7 @@
   </div>
   <!-- End Login Modal  -->
   <!-- Register Modal  -->
-  <div id="registerModal" ng-controller="registerCtrl" class="modal">
+  <!-- <div id="registerModal" ng-controller="registerCtrl" class="modal">
     <div class="modal-content">
       <h4>Register</h4>
       <form>
@@ -57,10 +55,10 @@
         <input type="submit" ng-click="createUser()" class="modal-action modal-close waves-effect waves-green btn-flat" value="Register">
       </form>
     </div>
-  </div>
+  </div> -->
   <!-- End Register Modal  -->
   <!-- AddQuote Modal -->
-  <div id="postModal" ng-controller="postCtrl" class="modal">
+  <div id="postModal" ng-controller="quoteCtrl" class="modal">
     <div class="modal-content">
       <h4>New Quote</h4>
       <form ng-submit="newPost()">
