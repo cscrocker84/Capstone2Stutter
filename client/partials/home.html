@@ -7,7 +7,6 @@
             <div class="container">
   <button class="waves-effect grey btn-large">Logout</button>
   <button id="loginButton" class="waves-effect grey btn-large"> LOGIN</button><br>
-  <h1>Quotes from Famous Stutterers</h1>
 
 <!--   ng-repeat through posts -->
 <div class="col s9">
@@ -15,8 +14,7 @@
       <h4>"{{quote.quote}}"</h4>
       <h5>Author: {{quote.author}}</h5>
       </div>
-    <!--   <p class="light">{{value.venue}}, {{value.date}}</p> -->
-   <!--    <p class="light">Posted By: {{value.author}}</p> -->
+
     </div>
 
   <!-- <div class="square">
@@ -43,9 +41,8 @@
       </p>
     </div>
   </div>
-  <!-- End Login Modal  -->
-  <!-- Register Modal  -->
-  <!-- <div id="registerModal" ng-controller="registerCtrl" class="modal">
+
+  <div id="registerModal" ng-controller="registerCtrl" class="modal">
     <div class="modal-content">
       <h4>Register</h4>
       <form>
@@ -56,7 +53,7 @@
         <input type="submit" ng-click="createUser()" class="modal-action modal-close waves-effect waves-green btn-flat" value="Register">
       </form>
     </div>
-  </div> -->
+  </div>
   <!-- End Register Modal  -->
   <!-- AddQuote Modal -->
   <div id="postModal" ng-controller="quoteCtrl" class="modal">
